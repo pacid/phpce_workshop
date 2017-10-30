@@ -1,0 +1,9 @@
+version: "3"
+services:
+  nginx:
+    volumes:
+      - phpce-es-sync:/code:nocopy
+
+volumes:
+  phpce-es-sync:
+    external: true

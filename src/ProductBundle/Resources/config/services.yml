@@ -1,0 +1,5 @@
+services:
+
+    elastica_search_service:
+        class: ProductBundle\Service\SearchService
+        arguments: ["@fos_elastica.index.workshop.shop"]

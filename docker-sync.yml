@@ -1,0 +1,13 @@
+version: "2"
+
+options:
+  verbose: false
+  compose-file-path:
+    - 'docker-compose.yml'
+    - 'docker-compose-dev.mac.yml'
+syncs:
+  phpce-es-sync:
+    src: './'
+    host_disk_mount_mode: 'cached'
+    sync_strategy: 'native_osx'
+    sync_args: "-ignore='Path .idea' -ignore='Path .git' -ignore='Name .DS_Store' -ignore='BelowPath var/logs' -ignore='BelowPath var/sessions' -ignore='BelowPath var/cache' -ignorenot='Path var/cache/dev/profiler' -ignorenot='Path var/cache/dev/appDevDebugProjectContainer.xml' -ignorenot='Path cms/app/cache/dev/appDevUrlGenerator.php'"

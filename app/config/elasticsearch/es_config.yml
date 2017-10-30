@@ -1,0 +1,9 @@
+fos_elastica:
+    serializer:
+        serializer: jms_serializer
+    clients:
+        default: { host: elasticsearch1, port: 9200 }
+    indexes:
+        workshop:
+            types:
+                shop:

@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "8089:80"
+    container_name: phpce_nginx
+    depends_on:
+      - db
+      - elasticsearch1
+    networks:
+      espeo:
+        aliases:
+          - nginx
+
+  db:
+    image: mysql
+    container_name: phpce_mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    networks:
+      espeo:
+        aliases:
+          - mysql
+
+  elasticsearch1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+    container_name: phpce_elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - "9209:9200"
+      - "9309:9300"
+    networks:
+      espeo:
+        aliases:
+          - elasticsearch
+
+  kibana:
+    image: kibana
+    container_name: phpce_kibana
+    ports:
+        - "5609:5601"
+    networks:
+      espeo:
+        aliases:
+          - kibana
+
+volumes:
+  esdata1:
+    driver: local
+
+networks:
+  espeo:

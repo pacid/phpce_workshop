@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+</head>
+<body>
+<div style="border: 1px solid gray"></div>
+<div>
+    <a href="{{ path('product_index') }}" style="margin: 10px">PRODUKTY</a>
+    <a href="{{ path('category_index') }}" style="margin: 10px">KATEGORIE</a>
+    <a href="{{ path('status_index') }}" style="margin: 10px">STATUSY</a>
+</div>
+<div style="border: 1px solid gray"></div>
+<div>
+    <a href="{{ path('search_1') }}" style="margin: 10px">Zadanie1</a>
+    <a href="{{ path('search_2') }}" style="margin: 10px">Zadanie2</a>
+    <a href="{{ path('search_3') }}" style="margin: 10px">Zadanie3</a>
+    <a href="{{ path('search_4') }}" style="margin: 10px">Zadanie4</a>
+    <a href="{{ path('search_5') }}" style="margin: 10px">Zadanie5</a>
+    <a href="{{ path('search_6') }}" style="margin: 10px">Zadanie6</a>
+    <a href="{{ path('search_7') }}" style="margin: 10px">Zadanie7</a>
+</div>
+<div style="border: 1px solid gray"></div>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
