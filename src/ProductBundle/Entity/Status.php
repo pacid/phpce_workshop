@@ -22,6 +22,9 @@ class Status
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("integer")
      */
     private $id;
 

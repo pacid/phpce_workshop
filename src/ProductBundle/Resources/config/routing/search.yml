@@ -32,3 +32,8 @@ search_7:
     path:     /test7
     defaults: { _controller: "ProductBundle:Search:test7" }
     methods:  GET
+
+search_8:
+    path:     /test8
+    defaults: { _controller: "ProductBundle:Search:test8" }
+    methods:  GET

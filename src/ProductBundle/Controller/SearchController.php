@@ -56,6 +56,13 @@ class SearchController extends Controller
         return $this->renderCustomView($results);
     }
 
+    public function test8Action()
+    {
+        $results = $this->get('elastica_search_service')->test8();
+
+        return $this->renderCustomView($results);
+    }
+
     private function renderCustomView($data)
     {
         return $this->render(':search:index.html.twig', [

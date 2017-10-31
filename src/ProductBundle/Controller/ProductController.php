@@ -15,12 +15,9 @@ class ProductController extends Controller
 {
     /**
      * Lists all product entities.
-     *
      */
     public function indexAction()
     {
-        //$res = $this->get('elastica_search_service')->test1();
-
         $em = $this->getDoctrine()->getManager();
 
         $products = $em->getRepository('ProductBundle:Product')->findAll();
@@ -94,9 +91,6 @@ class ProductController extends Controller
 
     /**
      * Deletes a product entity.
-     *      [Symfony\Component\Yaml\Exception\ParseException]
-     * phpce_nginx       |   The reserved indicator "@" cannot start a plain scalar; you need to quote t
-     * phpce_nginx       |   he scalar at line 69 (near "statusId: @status_middle").
      */
     public function deleteAction(Request $request, Product $product)
     {

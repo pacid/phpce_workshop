@@ -8,6 +8,7 @@ use Elastica\Result;
 use Elastica\ResultSet;
 use Elastica\Script\Script;
 use Elastica\SearchableInterface;
+use Elastica\Suggest\Term;
 
 class SearchService
 {
@@ -62,6 +63,13 @@ class SearchService
     }
 
     public function test7()
+    {
+        $results = [];
+
+        return $this->getResult($results);
+    }
+
+    public function test8()
     {
         $results = [];
 
