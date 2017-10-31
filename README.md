@@ -2,7 +2,7 @@
 SYMFONY3 + ELASTICSEARCH WORKSHOP
 
 # SETUP (Mac)
-1. Install Docker for Mac (https://docs.docker.com/docker-for-mac/install/)
+1. Install Docker for Mac (https://docs.docker.com/docker-for-mac/install/) stable or edge max version 17.09.0-ce-mac34 (19605). Version 10.19.0-ce-mac36 should work with docker-sync 0.5.0-beta1 but it was not tested for this workshops.
 2. Install docker-sync (https://github.com/EugenMayer/docker-sync/wiki/docker-sync-on-OSX)
 3. cd into workshopProjectFiles && **make mac**
 4. add **127.0.0.1 phpce_elasticsearch.loc** into **/etc/hosts**
