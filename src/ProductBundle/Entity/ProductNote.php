@@ -43,6 +43,9 @@ class ProductNote
     /**
      * @ORM\ManyToOne(targetEntity="NoteCategory")
      * @ORM\JoinColumn(name="note_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ProductBundle\Entity\NoteCategory")
      */
     private $noteCategory;
 

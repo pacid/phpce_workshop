@@ -78,6 +78,9 @@ class Product
      * @var int
      * @ORM\ManyToOne(targetEntity="Status", inversedBy="products")
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ProductBundle\Entity\Status")
      */
     private $statusId;
 
@@ -85,12 +88,18 @@ class Product
      * @var \Doctrine\Common\Collections\ArrayCollection $productCategories
      *
      * @ORM\ManyToMany(targetEntity="ProductBundle\Entity\Category", mappedBy="products", cascade={"persist"})
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ArrayCollection<ProductBundle\Entity\Category>")
      */
     private $productCategories;
 
     /**
      * @var ArrayCollection<ProductBundle\Entity\ProductNote>
      * @ORM\OneToMany(targetEntity="ProductNote", mappedBy="products", cascade={"persist"})
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ArrayCollection<ProductBundle\Entity\ProductNote>")
      */
     private $notes;
 

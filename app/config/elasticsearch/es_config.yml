@@ -5,5 +5,73 @@ fos_elastica:
         default: { host: elasticsearch1, port: 9200 }
     indexes:
         workshop:
+            settings:
+                analysis:
+                    filter:
+                        regexp_filter:
+                            type: "ngram"
+                            min_gram: 3
+                            max_gram: 30
+                    analyzer:
+                        index_regexp:
+                            type: "custom"
+                            tokenizer: "whitespace"
+                            filter: ["lowercase", "regexp_filter"]
+                        search_regexp:
+                            type: "custom"
+                            tokenizer: "whitespace"
+                            filter: ["lowercase"]
             types:
                 shop:
+                    serializer:
+                        groups: [workshop1]
+                    persistence:
+                        driver: orm
+                        model: ProductBundle\Entity\Product
+                    _all:
+                        enabled: false
+                    properties:
+                        name:
+                            type: "string"
+                        description:
+                            type: "string"
+                            analyzer:  "index_regexp"
+                            search_analyzer: "search_regexp"
+                        created:
+                            type: "date"
+                            format: "yyyy-MM-dd HH:mm:ss"
+                        price:
+                            type: "integer"
+                        quantity:
+                            type: "integer"
+                        status_id:
+                            type: "object"
+                            properties:
+                                id:
+                                    type: "integer"
+                                name:
+                                    type: "string"
+                                enabled:
+                                    type: "boolean"
+                        product_categories:
+                            type: "object"
+                            properties:
+                                name:
+                                    type: "string"
+                                enabled:
+                                    type: "boolean"
+                        notes:
+                            type: "nested"
+                            include_in_parent: true
+                            properties:
+                                note:
+                                    type: "integer"
+                                note_category:
+                                    type: "object"
+                                    properties:
+                                        id:
+                                            type: "integer"
+                                        name:
+                                            type: "string"
+                        count_categories:
+                            type: "long"
