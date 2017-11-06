@@ -342,4 +342,9 @@ class Product
         }
     }
 
+    public function shouldBeInES()
+    {
+        return $this->quantity > 0;
+    }
+
 }

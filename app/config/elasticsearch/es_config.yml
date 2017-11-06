@@ -28,6 +28,7 @@ fos_elastica:
                     persistence:
                         driver: orm
                         model: ProductBundle\Entity\Product
+                    indexable_callback: "shouldBeInES"
                     _all:
                         enabled: false
                     properties:
